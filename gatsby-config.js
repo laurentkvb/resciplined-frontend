@@ -16,7 +16,7 @@ module.exports = {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
         custom: {
-          families: ["Crimson, sans-serif, Andada"],
+          families: ["Roboto, sans-serif"],
           urls: ["/fonts/index.css"],
         },
       },
@@ -65,5 +65,6 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-plugin-netlify",
     "gatsby-plugin-styled-components",
+    "gatsby-plugin-sass",
   ],
 };

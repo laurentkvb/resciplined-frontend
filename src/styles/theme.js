@@ -26,7 +26,7 @@ const theme = {
     heading: 700,
   },
   fonts: {
-    primary: 'Andada',
+    primary: 'Roboto',
   },
   fontSizes: {
     root: '16px',

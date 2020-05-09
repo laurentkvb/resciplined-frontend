@@ -8,7 +8,6 @@ import theme from "../styles/theme";
 import GlobalStyle from "../styles/GlobalStyle";
 import { SEO } from "@components/SEO";
 
-import Footer from "@slices/Footer";
 import Header from "@slices/Header";
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
@@ -41,7 +40,7 @@ const Layout: React.FC<DefaultLayoutProps> = ({
         <main>
           {children}
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   </LocaleContext.Provider>

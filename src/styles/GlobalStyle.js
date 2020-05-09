@@ -91,60 +91,102 @@ const GlobalStyle = createGlobalStyle(
       }
       
       @font-face {
-        font-family: 'Crimson';
-        src: url('../../static/fonts/Crimson/Crimson-BoldItalic.woff2') format('woff2'),
-        url('../../static/fonts/Crimson/Crimson-BoldItalic.woff') format('woff');
-        font-weight: bold;
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-LightItalic.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-LightItalic.woff') format('woff');
+        font-weight: 300;
         font-style: italic;
       }
       
       @font-face {
-        font-family: 'Crimson';
-        src: url('../../static/fonts/Crimson/Crimson-Bold.woff2') format('woff2'),
-        url('../../static/fonts/Crimson/Crimson-Bold.woff') format('woff');
-        font-weight: bold;
-        font-style: normal;
-      }
-      
-      @font-face {
-        font-family: 'Crimson';
-        src: url('../../static/fonts/Crimson/Crimson-Italic.woff2') format('woff2'),
-        url('../../static/fonts/Crimson/Crimson-Italic.woff') format('woff');
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Italic.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-Italic.woff') format('woff');
         font-weight: normal;
         font-style: italic;
       }
       
       @font-face {
-        font-family: 'Andada';
-        src: url('../../static/fonts/Andada/Andada-Regular.woff2') format('woff2'),
-        url('../../static/fonts/Andada/Andada-Regular.woff') format('woff');
-        font-weight: normal;
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Black.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-Black.woff') format('woff');
+        font-weight: 900;
         font-style: normal;
       }
       
       @font-face {
-        font-family: 'Andada';
-        src: url('../../static/fonts/Andada/Andada-Bold.woff2') format('woff2'),
-        url('../../static/fonts/Andada/Andada-Bold.woff') format('woff');
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
+           url('../../static/fonts/Roboto/Roboto-Light.woff') format('woff');
+        font-weight: 300;
+        font-style: normal;
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-BlackItalic.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-BlackItalic.woff') format('woff');
+        font-weight: 900;
+        font-style: italic;
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-BoldItalic.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-BoldItalic.woff') format('woff');
+        font-weight: bold;
+        font-style: italic;
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-MediumItalic.woff2') format('woff2'),
+           url('../../static/fonts/Roboto/Roboto-MediumItalic.woff') format('woff');
+        font-weight: 500;
+        font-style: italic;
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-ThinItalic.woff2') format('woff2'),
+           url('../../static/fonts/Roboto/Roboto-ThinItalic.woff') format('woff');
+        font-weight: 100;
+        font-style: italic;
+      }
+      
+      @font-face {
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
+           url('../../static/fonts/Roboto/Roboto-Bold.woff') format('woff');
         font-weight: bold;
         font-style: normal;
       }
       
       @font-face {
-        font-family: 'Andada';
-        src: url('../../static/fonts/Andada/Andada-Italic.woff2') format('woff2'),
-        url('../../static/fonts/Andada/Andada-Italic.woff') format('woff');
-        font-weight: normal;
-        font-style: italic;
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
+            url('../../static/fonts/Roboto/Roboto-Medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
       }
       
       @font-face {
-        font-family: 'Andada';
-        src: url('../../static/fonts/Andada/Andada-BoldItalic.woff2') format('woff2'),
-        url('../../static/fonts/Andada/Andada-BoldItalic.woff') format('woff');
-        font-weight: bold;
-        font-style: italic;
+        font-family: 'Roboto';
+        src: url('../../static/fonts/Roboto/Roboto-Thin.woff2') format('woff2'),
+           url('../../static/fonts/Roboto/Roboto-Thin.woff') format('woff');
+        font-weight: 100;
+        font-style: normal;
       }
+      
+      @font-face {
+          font-family: 'Roboto';
+          src: url('../../static/fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
+             url('../../static/fonts/Roboto/Roboto-Regular.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+        
+
 
 
     html {
