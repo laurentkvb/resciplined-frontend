@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button primary variant snapshot test 1`] = `
+.c0 {
+  box-sizing: border-box;
+  min-width: 0;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  background-color: #002880;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.c0:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c0.c0.c0 {
+  border-radius: 3px;
+  color: #FFFFFF;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+<button
+  class="c0"
+  color="white"
+  font-weight="display"
+  height="40px"
+  type="submit"
+>
+  Primary button
+</button>
+`;
+
+exports[`Button tertiary variant snapshot test 1`] = `
+.c0 {
+  box-sizing: border-box;
+  min-width: 0;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  background-color: #f29323;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.c0:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c0.c0.c0 {
+  border-radius: 3px;
+  color: #FFFFFF;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+<button
+  class="c0"
+  color="white"
+  font-weight="display"
+  height="40px"
+  type="submit"
+>
+  Tertiary button
+</button>
+`;
+
+exports[`Button text variant snapshot test 1`] = `
+.c0 {
+  box-sizing: border-box;
+  min-width: 0;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  background-color: transparent;
+  font-size: 1.125rem;
+}
+
+.c0:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c0.c0.c0 {
+  border-radius: 3px;
+  color: #FFFFFF;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+<button
+  class="c0"
+  color="white"
+  font-weight="display"
+  height="40px"
+  type="submit"
+>
+  Text button
+</button>
+`;
+
+exports[`Button with leading icon snapshot test 1`] = `
+.c0 {
+  box-sizing: border-box;
+  min-width: 0;
+  -webkit-transition: -webkit-transform .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+  background-color: #002880;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.c0:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.c0.c0.c0 {
+  border-radius: 3px;
+  color: #FFFFFF;
+  height: 40px;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.c1.c1.c1 {
+  margin-right: 12px;
+  font-size: 1.125rem;
+}
+
+<button
+  class="c0"
+  color="white"
+  font-weight="display"
+  height="40px"
+  type="submit"
+>
+  <i
+    class="c1 fas fa-alien"
+    font-size="2"
+  />
+  Text button
+</button>
+`;

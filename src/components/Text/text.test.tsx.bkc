@@ -1,0 +1,30 @@
+import React from "react";
+import { render } from "tests/test-utils";
+
+import Text from "./Text";
+
+test("Text snapshot Test", () => {
+  const { container } = render(
+    <>
+      <Text variant="title">Title</Text>
+      <Text variant="body">Title</Text>
+      <Text variant="paragraph">Title</Text>
+    </>
+  );
+
+  // Asserts Text component to match snapshot.
+  expect(container.firstChild).toMatchSnapshot();
+});
+
+test("Text", () => {
+  const { getByTestId } = render(
+    <Text variant="title">Lorem ipsum dolor sit amet consectetur.</Text>
+  );
+
+  const testComponent = getByTestId("Text");
+
+  // Asserts SubTitle component renders children correctly.
+  expect(testComponent.firstChild?.textContent).toBe(
+    "Lorem ipsum dolor sit amet consectetur."
+  );
+});

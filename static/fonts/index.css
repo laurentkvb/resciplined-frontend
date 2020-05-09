@@ -1,0 +1,66 @@
+
+@font-face {
+  font-family: 'Crimson';
+  src: url('Crimson/Crimson-Roman.woff2') format('woff2'),
+  url('Crimson/Crimson-Roman.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson';
+  src: url('Crimson/Crimson-BoldItalic.woff2') format('woff2'),
+  url('Crimson/Crimson-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Crimson';
+  src: url('Crimson/Crimson-Bold.woff2') format('woff2'),
+  url('Crimson/Crimson-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crimson';
+  src: url('Crimson/Crimson-Italic.woff2') format('woff2'),
+  url('Crimson/Crimson-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Andada';
+  src: url('Andada/Andada-Regular.woff2') format('woff2'),
+  url('Andada/Andada-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Andada';
+  src: url('Andada/Andada-Bold.woff2') format('woff2'),
+  url('Andada/Andada-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Andada';
+  src: url('Andada/Andada-Italic.woff2') format('woff2'),
+  url('Andada/Andada-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Andada';
+  src: url('Andada/Andada-BoldItalic.woff2') format('woff2'),
+  url('Andada/Andada-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+
