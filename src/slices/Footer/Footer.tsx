@@ -1,7 +1,7 @@
 import React from "react";
-import { Box } from "@components/Box";
+import Box from "@components/Box";
 import { Logo } from "@components/Logo";
-import { Flex } from "@components/Flex";
+import Flex from "@components/Flex";
 import Text from "@components/Text";
 
 import placeholder from "@assets/logo.png";

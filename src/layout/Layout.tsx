@@ -1,14 +1,13 @@
 import React, { ReactNode } from "react";
 
 import "../../static/fonts/index.css";
-import "@fortawesome/fontawesome-pro/css/all.css";
+import "@fortawesome/fontawesome-pro/js/all";
 
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/GlobalStyle";
 import { SEO } from "@components/SEO";
 
-import Header from "@slices/Header";
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {
   location: {
@@ -36,30 +35,13 @@ const Layout: React.FC<DefaultLayoutProps> = ({
       <SEO />
 
       <div>
-        <Header />
         <main>
           {children}
         </main>
-        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   </LocaleContext.Provider>
 );
 
-
-// export const footerQuery = graphql`
-//   {
-//     contentfulFooter {
-//       linkedinLink
-//       facebookLink
-//       instagramLink
-//       privacyStatement {
-//         file {
-//           url
-//         }
-//       }
-//     }
-//   }
-// `;
 
 export default Layout;

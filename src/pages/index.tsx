@@ -1,5 +1,6 @@
 import * as React from "react";
-import Gallery from "@components/Gallery/Gallery";
+import Gallery from "@components/Gallery";
+
 import Layout from "@components/Gallery/Layout";
 
 import image2 from "@assets/images/fulls/02.jpg";

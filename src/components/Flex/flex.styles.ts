@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { variant } from "styled-system";
 import { SystemProps } from "@models/styledSystem";
 
-import { Box } from "../Box";
+import Box from "../Box";
 
 export interface FlexProps extends SystemProps {
   variant?: string;

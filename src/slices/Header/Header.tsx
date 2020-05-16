@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Flex } from "@components/Flex";
+import Flex from "@components/Flex";
 import { Logo } from "@components/Logo";
 import Burger from "@components/Burger";
 import { HeaderStyled } from "./header.styles";
 import Headroom from "react-headroom";
-import { Box } from "@components/Box";
+import Box from "@components/Box";
 import Menu from "@components/Menu";
 
 

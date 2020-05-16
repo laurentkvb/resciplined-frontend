@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { Flex } from "@components/Flex";
-import { Box } from "@components/Box";
+import Flex from "@components/Flex";
+import Box from "@components/Box";
 import { SystemProps } from "@models/styledSystem";
 
 interface Props extends SystemProps {

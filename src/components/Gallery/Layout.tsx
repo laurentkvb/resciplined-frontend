@@ -7,7 +7,7 @@ import "@assets/sass/main.scss";
 
 /* eslint-disable */
 class Layout extends Component {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       isPreloaded: true,
@@ -18,7 +18,7 @@ class Layout extends Component {
     this.toggleFooter = this.toggleFooter.bind(this);
   }
 
-  linkHandler(e, name) {
+  linkHandler(e: any, name: string) {
     e.preventDefault();
     if (name === "about") {
       this.toggleFooter();

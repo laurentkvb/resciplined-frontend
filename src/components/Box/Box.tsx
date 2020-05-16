@@ -6,4 +6,6 @@ interface Props extends SystemProps {
   children?: ReactNode;
 }
 
-export const Box = (props: Props) => <BoxComponent {...props} />;
+const Box = (props: Props) => <BoxComponent {...props} />;
+
+export default Box;
