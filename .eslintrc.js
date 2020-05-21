@@ -29,8 +29,6 @@ module.exports = {
           '@assets': './src/assets',
           '@components/*': './src/components/*',
           '@components': './src/components',
-          '@slices/*': './src/slices/*',
-          '@slices': './src/slices',
           '@sections/*': './src/sections/*',
           '@sections': './src/sections',
           '@styles/*': './src/styles/*',

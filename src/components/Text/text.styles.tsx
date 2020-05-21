@@ -17,7 +17,7 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
         fontSize: ["0px", "70px", "70px", "70px", "100px", "100px", "100px"],
         lineHeight: ["0px", "63px", "63px", "63px", "94px", "94px", "94px"],
         fontWeight: "normal",
-        // textTransform: "uppercase"
+        color: "black"
       },
       h2: {
         display: "block",
@@ -30,9 +30,10 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
       h3: {
         display: "block",
         fontFamily: "Roboto",
-        fontSize: ["0px", "50px", "50px", "50px", "60px", "60px", "60px"],
-        lineHeight: ["0px", "50px", "50px", "50px", "56px", "56px", "56px"],
+        fontSize: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
+        lineHeight: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
         fontWeight: 800,
+        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000"
       },
       bodyL: {
         display: "inline",
@@ -51,7 +52,7 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
       bodyS: {
         display: "inline",
         fontFamily: "Roboto",
-        fontSize: ["0px", "16px", "16px", "16px", "18px", "18px", "18px"],
+        fontSize: ["0px", "10px", "10px", "10px", "12px", "12px", "12px"],
         lineHeight: ["0px", "20px", "20px", "20px", "24px", "24px", "24px"],
         fontWeight: 300,
       },

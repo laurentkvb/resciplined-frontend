@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 
 import Box from "@components/Box";
 import Flex from "@components/Flex";
+import Text from "@components/Text";
 import logo from "@assets/logo/favicon.png";
 import { Icon } from "@components/Button/button.styles";
 
@@ -25,7 +26,8 @@ const Header = ({ onAction = () => {} } : Props) => (
           />
           <Box marginLeft="20px">
             <strong>{config.heading}</strong>
-
+            <Box width="10px" />
+            <Text variant="bodyS">Be disciplined & responsible.</Text>
           </Box>
 
         </Flex>

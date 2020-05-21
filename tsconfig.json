@@ -70,12 +70,6 @@
             "@models": [
                 "src/models"
             ],
-            "@slices/*": [
-                "src/slices/*"
-            ],
-            "@slices": [
-                "src/slices"
-            ],
             "@styles/*": [
                 "src/styles/*"
             ],

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -57,15 +56,6 @@ class Layout extends Component {
         `}
         render={(data) => (
           <>
-            <Helmet
-              title={data.site.siteMetadata.title}
-              meta={[
-                { name: "description", content: "Multiverse" },
-                { name: "keywords", content: "site, web" },
-              ]}
-            >
-              <html lang="en" />
-            </Helmet>
             <div
               className={`main-body ${footerVisible ? "content-active" : ""}
                ${isPreloaded ? "is-preload" : ""}`}

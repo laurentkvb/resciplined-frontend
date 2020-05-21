@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Lightbox from "react-images";
 import Box from "@components/Box";
+import { graphql, navigate, useStaticQuery } from "gatsby";
 
 
 interface Props {
@@ -12,6 +13,11 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [currentImages, setCurrentImages] = useState<any[]>([]);
 
+  const availableQuotePages = useStaticQuery(pageQuery);
+
+  const { edges } = availableQuotePages.allContentfulPage;
+
+
   useEffect(() => {
     setCurrentImages(shuffle(images));
   }, [images]);
@@ -20,9 +26,26 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
 
 
   const openLightbox = (index: number, event: any) => {
+    const imageSelected = images[index];
+
+    // random, but should be based on the image type clicked
+    const items = edges.filter((test) => test.node.type.toLowerCase() === imageSelected.type.toLowerCase());
+
+    const item = items[Math.floor(Math.random() * items.length)];
+
+
+    navigate(`${item.node.type.toLowerCase()}/${item.node.id}`, { state: {
+      modal: true
+    } }); // navigate to edit page
+
+
     event.preventDefault();
-    setCurrentImage(index);
-    setLightBoxIsOpen(true);
+    // setCurrentImage(index);
+    // setLightBoxIsOpen(true);
+    // navigate("modal-example", { state: {
+    //   modal: true,
+    //   noScroll: false
+    // } }); // navigate to edit page
   };
 
   const closeLightbox = () => {
@@ -39,7 +62,12 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
   };
 
   const gotoImage = (index: number) => {
-    setCurrentImage(index);
+    console.log(`Index: ${index}`);
+    navigate("modal-example", { state: {
+      modal: true
+    } }); // navigate to edit page
+
+    // setCurrentImage(index);
   };
 
   const handleClickImage = () => {
@@ -72,7 +100,11 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
     <>
       <>
         {currentImages.map((obj: any, i: number) => (
+
+
           <article className="thumb" key={obj.src}>
+
+
             <span
               style={{
                 backgroundImage: `url(${obj.src})`,
@@ -82,16 +114,20 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
               onClick={(e) => openLightbox(i, e)}
               className="image"
             >
+
               <img
                 style={{ display: "None" }}
                 src={obj.thumbnail}
                 alt=""
                 title={obj.title}
               />
+
             </span>
-            <h2>{obj.title}</h2>
+
+            <h2 style={{ zIndex: 1 }}>{obj.title}</h2>
             <p>{obj.desc}</p>
           </article>
+
         ))}
       </>
       <Lightbox
@@ -114,3 +150,18 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
 
 
 export default Gallery;
+
+export const pageQuery = graphql`
+query GetPages {
+  allContentfulPage {
+    edges {
+      node {
+        id
+        type
+      }
+    }
+  }
+}
+
+
+`;

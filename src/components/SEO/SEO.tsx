@@ -22,7 +22,7 @@ export const SEO: React.FC<SEOProps> = ({
 }: SEOProps) => {
   const { locale } = React.useContext(LocaleContext);
 
-  const { defaultSEO } = i18n[locale];
+  const { defaultSEO } = i18n[locale === undefined ? "en-US" : locale];
 
   const metaData = {
     title: title || defaultSEO.title,
