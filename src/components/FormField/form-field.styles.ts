@@ -26,6 +26,7 @@ export const Label = styled(animated.label)`
   padding: 0 10px;
   font-size: 14px;
   z-index: 1;
+  margin-top: 5px;
   display: flex;
   align-items: center;
   // background-color: ${({ theme }) => `${theme.colors.blackTemplate}`};

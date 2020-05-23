@@ -86,7 +86,7 @@ export const FormContact = () => {
               <FormWrapper onSubmit={handleSubmit}>
                 <FormColumn>
                   <FormField
-                    label="FULL NAME"
+                    label="Full name"
                     type="text"
                     name="name"
                     onChange={handleChange}
@@ -95,7 +95,7 @@ export const FormContact = () => {
                   />
 
                   <FormField
-                    label="EMAIL ADDRESS"
+                    label="Email address"
                     type="email"
                     name="email"
                     onChange={handleChange}
@@ -111,7 +111,7 @@ export const FormContact = () => {
                   >
                     <FormField
                       height="100%"
-                      label="MESSAGE"
+                      label="Message"
                       type="textarea"
                       name="message"
                       onChange={handleChange}
@@ -148,7 +148,7 @@ export const FormContact = () => {
 
               <Text
                 variant="h3"
-                color="pink"
+                color="greenAccent"
                 fontSize="16px"
                 lineHeight="30px"
               >

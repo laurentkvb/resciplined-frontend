@@ -9,14 +9,15 @@ import YouTube, { Options } from "react-youtube";
 import { IQuotePage } from "@models/IQuotePage";
 import { BLOCKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { SEO } from "@components/SEO";
 
 export const richTextOptions = {
   renderNode: {
     [BLOCKS.HEADING_1]: ({}, children: ReactNode) => (
       <Text
-        variant="quoteSmall"
+        variant="quoteAuthor"
         color="greenAccent"
-        marginBottom="36px"
+        marginBottom="10px"
       >
         {children}
       </Text>
@@ -52,17 +53,15 @@ const Modal : React.FC<Props> = ({ data } : Props) => {
   useStaticQuery(pageQuery);
 
   const quote: IQuotePage = data.contentfulPage;
-
   const description = quote.description ? quote.description : "";
   const author = quote.author ? quote.author : "";
-  const { image, youtubeVideoId } = quote;
 
-  const videoSlice = youtubeVideoId !== null && <YouTube videoId={youtubeVideoId} opts={youtubeOptions} />;
-  const imageSlice = image !== null && (
+  const videoSlice = quote.youtubeVideoId !== null && <YouTube videoId={quote.youtubeVideoId} opts={youtubeOptions} />;
+  const imageSlice = quote.image !== null && (
   <Box
     width="100%"
     height="500px"
-    backgroundImage={`url(${image.file.url})`}
+    backgroundImage={`url(${quote.image.file.url})`}
     backgroundPosition="center"
     backgroundSize="contain"
     backgroundRepeat="no-repeat"
@@ -72,7 +71,7 @@ const Modal : React.FC<Props> = ({ data } : Props) => {
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo } : ModalProps) => (
-        <Box padding={50} zIndex={100} color="black">
+        <Box padding={[0, 0, 0, 0, 50, 50, 50]} zIndex={100} color="black">
           {modal ? (
             <Link to={closeTo}>
               Close
@@ -80,6 +79,7 @@ const Modal : React.FC<Props> = ({ data } : Props) => {
           ) : (
             <header />
           )}
+          <SEO title={quote.type} />
 
 
           {imageSlice}
@@ -87,7 +87,7 @@ const Modal : React.FC<Props> = ({ data } : Props) => {
 
           <Box>
             {description && documentToReactComponents(description.json, richTextOptions)}
-            <Text variant="quoteSmall" color={modal ? "white" : "black"} textShadow="">{author && `${author}`}</Text>
+            <Text variant="quoteAuthor" color="black" textShadow="">{author && `${author}`}</Text>
           </Box>
 
 

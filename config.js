@@ -16,11 +16,6 @@ module.exports = {
       icon: "fab fa-github",
       name: "Github",
       url: "https://github.com/laurentkvb",
-    },
-    {
-      icon: "fab far fa-envelope",
-      name: "Email",
-      url: "mailto:lkvb90@gmail.com",
-    },
+    }
   ],
 };

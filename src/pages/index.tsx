@@ -3,8 +3,8 @@ import Gallery from "@components/Gallery";
 
 import Layout from "@components/Layout/Layout";
 
-import workout from "@assets/images/fulls/01.jpg";
-import workoutThumb from "@assets/images/thumbs/01.jpg";
+import workout from "@assets/images/fulls/workout.jpg";
+import workoutThumb from "@assets/images/thumbs/workoutThumb.jpg";
 
 import discipline from "@assets/images/fulls/discipline.jpg";
 import disciplineThumb from "@assets/images/thumbs/disciplineThumb.jpg";

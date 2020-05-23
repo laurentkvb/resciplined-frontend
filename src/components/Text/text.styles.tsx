@@ -62,16 +62,16 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
         fontWeight: "normal",
         fontSize: ["0px", "20px", "20px", "28px", "28px", "28px", "28px"],
         lineHeight: ["0px", "20px", "20px", "28px", "28px", "28px", "28px"],
-        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
+        // textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
         color: "white"
       },
-      quoteSmall: {
+      quoteAuthor: {
         display: "block",
         fontFamily: "Helvetica",
         fontWeight: "normal",
-        fontSize: ["0px", "10px", "10px", "25px", "28px", "28px", "28px"],
-        lineHeight: ["0px", "10px", "10px", "25px", "28px", "28px", "28px"],
-        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
+        fontSize: ["0px", "20px", "20px", "25px", "28px", "28px", "28px"],
+        lineHeight: ["0px", "20px", "20px", "25px", "28px", "28px", "28px"],
+        // textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
         color: "white"
       }
     }

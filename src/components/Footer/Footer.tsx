@@ -32,7 +32,7 @@ const Footer:React.FC<Props> = ({ onClose, isVisible }: Props) => (
               const { icon, name, url } = social;
               return (
                 <li key={url}>
-                  <a href={url} style={{ zoom: 2 }}>
+                  <a href={url} style={{ zoom: 10 }}>
                     <div className={`icon ${icon}`}>
                       <span className="label">{name}</span>
                     </div>
