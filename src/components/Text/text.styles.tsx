@@ -60,8 +60,8 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
         display: "block",
         fontFamily: "Helvetica",
         fontWeight: "normal",
-        fontSize: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
-        lineHeight: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
+        fontSize: ["0px", "20px", "20px", "28px", "28px", "28px", "28px"],
+        lineHeight: ["0px", "20px", "20px", "28px", "28px", "28px", "28px"],
         textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
         color: "white"
       },

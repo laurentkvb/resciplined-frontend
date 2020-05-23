@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing";
 import Text from "@components/Text";
@@ -7,6 +7,28 @@ import "./style.css";
 import Box from "@components/Box";
 import YouTube, { Options } from "react-youtube";
 import { IQuotePage } from "@models/IQuotePage";
+import { BLOCKS } from "@contentful/rich-text-types";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+
+export const richTextOptions = {
+  renderNode: {
+    [BLOCKS.HEADING_1]: ({}, children: ReactNode) => (
+      <Text
+        variant="quoteSmall"
+        color="greenAccent"
+        marginBottom="36px"
+      >
+        {children}
+      </Text>
+    ),
+    [BLOCKS.PARAGRAPH]: ({}, children: ReactNode) => (
+      <Box marginBottom="36px" width="100%">
+        <Text variant="quote" color="black">{children}</Text>
+      </Box>
+    )
+  }
+};
+
 
 const youtubeOptions : Options = {
   height: "390",
@@ -64,8 +86,8 @@ const Modal : React.FC<Props> = ({ data } : Props) => {
           {videoSlice}
 
           <Box>
-            <Text variant="quote" color={modal ? "black" : "white"}>{description && `${description.description}`}</Text>
-            <Text variant="quoteSmall" color={modal ? "black" : "white"} textShadow="">{author && `${author}`}</Text>
+            {description && documentToReactComponents(description.json, richTextOptions)}
+            <Text variant="quoteSmall" color={modal ? "white" : "black"} textShadow="">{author && `${author}`}</Text>
           </Box>
 
 
@@ -86,7 +108,7 @@ query getPageQuote($id: String) {
     type
     author
     description {
-      description
+      json
     } 
     image {
       file {

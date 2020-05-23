@@ -1,12 +1,10 @@
 import { ISliceFields } from "@models/ISliceFields";
-import { File } from "@models/Common";
+import { File, Json } from "@models/Common";
 
 export interface IQuotePage extends ISliceFields{
   type: string;
   author: string;
-  description: {
-    description: string;
-  },
+  description: Json;
   image: File,
   youtubeVideoId: string;
 
