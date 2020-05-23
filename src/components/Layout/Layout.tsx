@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StaticQuery, graphql } from "gatsby";
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "../Header";
+import Footer from "../Footer/Footer";
 import "@assets/sass/main.scss";
 
 /* eslint-disable */

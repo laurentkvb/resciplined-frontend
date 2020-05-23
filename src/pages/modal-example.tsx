@@ -35,7 +35,7 @@ const ModalExamplePage = () => {
               </h1>
             </header>
           )}
-          <Text variant="h1">{`Random value: ${page}`}</Text>
+          <Text variant="h1" display="none">{`Random value: ${page}`}</Text>
 
 
           <h2>Modal Page</h2>

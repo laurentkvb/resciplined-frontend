@@ -1,5 +1,5 @@
 import React from "react";
-import config from "../../../../config";
+import config from "../../../config";
 import { Link } from "gatsby";
 
 import Box from "@components/Box";
@@ -27,7 +27,7 @@ const Header = ({ onAction = () => {} } : Props) => (
           <Box marginLeft="20px">
             <strong>{config.heading}</strong>
             <Box width="10px" />
-            <Text variant="bodyS">Be disciplined & responsible.</Text>
+            <Text variant="bodyS">Be responsible & disciplined.</Text>
           </Box>
 
         </Flex>

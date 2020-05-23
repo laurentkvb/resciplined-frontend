@@ -1,36 +1,26 @@
 module.exports = {
-  siteTitle: "Gatsby Starter Multiverse", // <title>
-  manifestName: "Multiverse",
+  siteTitle: "Resciplined", // <title>
+  manifestName: "Resciplined",
   manifestShortName: "Landing", // max 12 characters
   manifestStartUrl: "/",
   manifestBackgroundColor: "#663399",
   manifestThemeColor: "#663399",
   manifestDisplay: "standalone",
   manifestIcon: "src/assets/img/website-icon.png",
-  pathPrefix: "/gatsby-starter-multiverse/", // This path is subpath of your hosting https://domain/portfolio
+  pathPrefix: "/resciplined-frontend/",
   heading: "Resciplined",
   subHeading: "",
   // social
   socialLinks: [
     {
-      icon: "fa-github",
+      icon: "fab fa-github",
       name: "Github",
-      url: "https://github.com/anubhavsrivastava",
+      url: "https://github.com/laurentkvb",
     },
     {
-      icon: "fa-twitter",
-      name: "Twitter",
-      url: "https://twitter.com/onlyanubhav",
-    },
-    {
-      icon: "fa-facebook",
-      name: "Facebook",
-      url: "https://facebook.com/theanubhav",
-    },
-    {
-      icon: "fa-envelope-o",
+      icon: "fab far fa-envelope",
       name: "Email",
-      url: "mailto:anubhav.srivastava00@gmail.com",
+      url: "mailto:lkvb90@gmail.com",
     },
   ],
 };

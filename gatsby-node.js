@@ -67,7 +67,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
         return createPage({
           path: `${type}/${slug}`,
-          component: path.resolve("./src/templates/modal/Modal.tsx"),
+          component: path.resolve("./src/templates/modal/modal.tsx"),
           context: {
             slug: slug,
             id: slug,

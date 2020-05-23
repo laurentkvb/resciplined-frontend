@@ -9,6 +9,8 @@ const theme = {
     blue1: '#E5E9F2',
     orange1: '#f29323',
     black: '#000000',
+    blackTemplate: '#242629',
+    blackTemplate2: '#34363b',
     blackLight: '#202020',
     grey1: '#212121',
     grey2: '#919191',

@@ -31,6 +31,7 @@
     overflow: hidden;
     position: relative;
 
+
     &:after {
       @include vendor(
         'background-image',
@@ -51,13 +52,25 @@
       -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
+      //background-size: cover;
       border: 0;
       height: 100%;
       left: 0;
       position: absolute;
       top: 0;
       width: 100%;
+
+      background-size: 100% 100%;
+
+      transition: background-size 0.3s ease-in-out;
+      -moz-transition: background-size 0.3s ease-in-out;
+      -ms-transition: background-size 0.3s ease-in-out;
+      -o-transition: background-size 0.3s ease-in-out;
+      -webkit-transition: background-size 0.3s ease-in-out;
+
+      &:hover {
+        background-size: 120% 120%;
+      }
     }
 
     > h2 {

@@ -7,6 +7,7 @@ interface Props {
   leadingIcon?: string;
   onClick: Function;
   variant?: string;
+  disabled?: boolean;
 }
 
 const Button = ({ children, leadingIcon, onClick, variant = "primary", ...props }: Props) => (
@@ -17,9 +18,9 @@ const Button = ({ children, leadingIcon, onClick, variant = "primary", ...props 
     fontWeight="bold"
     fontSize={["19px", "19px"]}
     border={["1px solid"]}
-    borderColor={["pink"]}
+    borderColor={["#34a58e"]}
     backgroundColor={["black"]}
-    borderRadius="44px"
+    borderRadius="5px"
     color="white"
     height="55px"
     textAlign="center"

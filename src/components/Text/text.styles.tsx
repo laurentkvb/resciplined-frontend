@@ -25,7 +25,7 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
         fontSize: ["0px", "60px", "60px", "60px", "80px", "80px", "80px"],
         lineHeight: ["0px", "50px", "50px", "50px", "70px", "70px", "70px"],
         fontWeight: 600,
-        textTransform: "uppercase"
+        // textTransform: "uppercase"
       },
       h3: {
         display: "block",
@@ -56,6 +56,24 @@ export const TextComponent: React.FC<TextProps> = styled.span<TextProps>`
         lineHeight: ["0px", "20px", "20px", "20px", "24px", "24px", "24px"],
         fontWeight: 300,
       },
+      quote: {
+        display: "block",
+        fontFamily: "Helvetica",
+        fontWeight: "normal",
+        fontSize: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
+        lineHeight: ["0px", "20px", "20px", "50px", "56px", "56px", "56px"],
+        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
+        color: "white"
+      },
+      quoteSmall: {
+        display: "block",
+        fontFamily: "Helvetica",
+        fontWeight: "normal",
+        fontSize: ["0px", "10px", "10px", "25px", "28px", "28px", "28px"],
+        lineHeight: ["0px", "10px", "10px", "25px", "28px", "28px", "28px"],
+        textShadow: "1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000",
+        color: "white"
+      }
     }
   })}
   &&& {
