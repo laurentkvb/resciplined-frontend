@@ -46,7 +46,7 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             <SEO title={quote.category} />
 
 
-            {(modal && quote.__typename === "ContentfulWebsite") && <Box height={modal ? "300px" : ""} />}
+            {(modal && quote.__typename === "ContentfulWebsite") && <Box height={modal ? [0, 50, 50, 50, 50, 50, 50] : ""} />}
 
             {quoteSlice}
 

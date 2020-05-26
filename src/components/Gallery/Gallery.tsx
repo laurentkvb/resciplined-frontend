@@ -32,7 +32,7 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
 
 
   const openLightbox = (index: number, event: any) => {
-    const imageSelected = images[index];
+    const imageSelected = currentImages[index];
 
     // random, but should be based on the image type clicked
     const items = contentfulQuotes.filter((test: any) => test.category.toLowerCase().replace(" ", "_") === imageSelected.type.toLowerCase());
@@ -137,7 +137,7 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
       </>
       <Lightbox
         currentImage={currentImage}
-        images={images.map((img) => {
+        images={currentImages.map((img) => {
           const result = img;
           result.caption = `${img.title} - ${img.desc}`;
           return result;
