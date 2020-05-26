@@ -6,7 +6,7 @@ import "@fortawesome/fontawesome-pro/js/all";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 import GlobalStyle from "../styles/GlobalStyle";
-import { SEO } from "@components/SEO";
+import SEO from "@components/SEO";
 
 
 interface DefaultLayoutProps extends React.HTMLProps<HTMLDivElement> {

@@ -3,6 +3,8 @@ import { StaticQuery, graphql } from "gatsby";
 import Header from "../Header";
 import Footer from "../Footer/Footer";
 import "@assets/sass/main.scss";
+import theme from "@styles/theme";
+import "./layout.css";
 
 /* eslint-disable */
 class Layout extends Component {
@@ -41,8 +43,10 @@ class Layout extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, fullWidth = false } = this.props;
     const { isPreloaded, footerVisible } = this.state;
+
+
     return (
       <StaticQuery
         query={graphql`
@@ -55,29 +59,35 @@ class Layout extends Component {
           }
         `}
         render={(data) => (
-          <>
             <div
               className={`main-body ${footerVisible ? "content-active" : ""}
                ${isPreloaded ? "is-preload" : ""}`}
+              style={{backgroundColor: fullWidth ? theme.colors.grey5 : theme.colors.grey5}}
             >
               <div id="wrapper">
                 <Header onAction={this.linkHandler} />
-                <div
-                  id="main"
-                  onClick={(e) => {
-                    if (footerVisible) {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      this.toggleFooter();
-                    }
-                  }}
-                >
-                  {children}
-                </div>
+
+
+                {!fullWidth
+                ?  <div
+                        id="main"
+                        onClick={(e) => {
+                          if (footerVisible) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            this.toggleFooter();
+                          }
+                        }}
+                    >
+                      {children}
+                    </div>
+                : children}
+
+
+
                 <Footer isVisible={footerVisible} onClose={this.toggleFooter} />
               </div>
             </div>
-          </>
         )}
       />
     );

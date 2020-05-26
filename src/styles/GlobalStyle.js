@@ -64,7 +64,7 @@ const GlobalStyle = createGlobalStyle(
 
     body {
       margin: 0;
-      background: ${theme.colors.grey5};
+      // background: ${theme.colors.grey5};
       font-family: ${theme.fonts.primary}, sans-serif;
       font-weight: ${theme.fontWeights.normal};
       -webkit-font-smoothing: antialiased;

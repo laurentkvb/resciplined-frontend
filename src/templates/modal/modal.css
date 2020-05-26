@@ -1,5 +1,6 @@
 .ReactModal__Overlay {
  z-index: 1000;
+ overflow-y: scroll;
  /*display: flex;*/
  /*flex-direction: column;*/
  /*justify-content: center;*/
@@ -9,8 +10,6 @@
 
 
 /*.ReactModal__Content {*/
-
-
 
 .ReactModal__Content--after-open {
 

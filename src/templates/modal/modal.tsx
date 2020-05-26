@@ -1,47 +1,20 @@
-import React, { ReactNode } from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import React from "react";
+import "./modal.css";
+
+
+import { Link } from "gatsby";
 import { ModalRoutingContext } from "gatsby-plugin-modal-routing";
-import Text from "@components/Text";
-
-import "./style.css";
 import Box from "@components/Box";
-import YouTube, { Options } from "react-youtube";
-import { IQuotePage } from "@models/IQuotePage";
-import { BLOCKS } from "@contentful/rich-text-types";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { SEO } from "@components/SEO";
+import SEO from "@components/SEO";
+import { IContentfulBase } from "@models/IContentfulBase";
+import Layout from "@components/Layout";
+import { quoteReducer } from "@utils/quoteReducer";
 
-export const richTextOptions = {
-  renderNode: {
-    [BLOCKS.HEADING_1]: ({}, children: ReactNode) => (
-      <Text
-        variant="quoteAuthor"
-        color="greenAccent"
-        marginBottom="10px"
-      >
-        {children}
-      </Text>
-    ),
-    [BLOCKS.PARAGRAPH]: ({}, children: ReactNode) => (
-      <Box marginBottom="36px" width="100%">
-        <Text variant="quote" color="black">{children}</Text>
-      </Box>
-    )
-  }
-};
-
-
-const youtubeOptions : Options = {
-  height: "390",
-  width: "100%",
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
-  },
-};
 
 interface Props {
-  data: any;
+  pageContext: {
+    data: IContentfulBase;
+  }
 }
 
 interface ModalProps {
@@ -49,75 +22,40 @@ interface ModalProps {
   closeTo: string;
 }
 
-const Modal : React.FC<Props> = ({ data } : Props) => {
-  useStaticQuery(pageQuery);
 
-  const quote: IQuotePage = data.contentfulPage;
-  const description = quote.description ? quote.description : "";
-  const author = quote.author ? quote.author : "";
+const Modal : React.FC<Props> = ({ pageContext } : Props) => {
+  const quote: IContentfulBase = pageContext.data;
 
-  const videoSlice = quote.youtubeVideoId !== null && <YouTube videoId={quote.youtubeVideoId} opts={youtubeOptions} />;
-  const imageSlice = quote.image !== null && (
-  <Box
-    width="100%"
-    height="500px"
-    backgroundImage={`url(${quote.image.file.url})`}
-    backgroundPosition="center"
-    backgroundSize="contain"
-    backgroundRepeat="no-repeat"
-  />
-  );
+  const quoteSlice = quoteReducer(quote);
 
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo } : ModalProps) => (
-        <Box padding={[0, 0, 0, 0, 50, 50, 50]} zIndex={100} color="black">
-          {modal ? (
-            <Link to={closeTo}>
-              Close
-            </Link>
-          ) : (
-            <header />
-          )}
-          <SEO title={quote.type} />
+        <Layout fullWidth>
+
+          <Box padding={[0, 0, 0, 0, 50, 50, 50]} zIndex={100} color="black" background="white" height="100%">
+            {modal ? (
+              <Link to={closeTo}>
+                Close
+              </Link>
+            ) : (
+              <header />
+            )}
+
+            {/* {modal && <Test />} */}
+            <SEO title={quote.category} />
 
 
-          {imageSlice}
-          {videoSlice}
+            {(modal && quote.__typename === "ContentfulWebsite") && <Box height={modal ? "300px" : ""} />}
 
-          <Box>
-            {description && documentToReactComponents(description.json, richTextOptions)}
-            <Text variant="quoteAuthor" color="black" textShadow="">{author && `${author}`}</Text>
+            {quoteSlice}
+
+
           </Box>
-
-
-          <Link to="/">Go back to the homepage</Link>
-
-        </Box>
+        </Layout>
       )}
     </ModalRoutingContext.Consumer>
   );
 };
 
 export default Modal;
-
-export const pageQuery = graphql`
-query getPageQuote($id: String) {
-
-  contentfulPage(id: {eq: $id}) {
-    type
-    author
-    description {
-      json
-    } 
-    image {
-      file {
-        url
-      }
-    }
-    youtubeVideoId
-  }
-  
-}
-
-`;

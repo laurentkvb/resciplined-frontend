@@ -27,7 +27,7 @@ const Header = ({ onAction = () => {} } : Props) => (
           <Box marginLeft="20px">
             <strong>{config.heading}</strong>
             <Box width="10px" />
-            <Text variant="bodyS">Be responsible & disciplined.</Text>
+            <Text variant="bodyS" fontFamily="Roboto">Be responsible & disciplined.</Text>
           </Box>
 
         </Flex>

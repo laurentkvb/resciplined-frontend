@@ -17,7 +17,7 @@ module.exports = {
       options: {
         custom: {
           families: ["Roboto, sans-serif"],
-          urls: ["fonts/index.css"],
+          urls: ["/fonts/index.css"],
         },
       },
     },

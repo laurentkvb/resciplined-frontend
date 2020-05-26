@@ -51,26 +51,63 @@ exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const { data } = await graphql(`
-    {
-      pages: allContentfulPage {
-        nodes {
-          id
-          type
+{
+  pages: contentfulQuotes {
+    quotes {
+      ... on ContentfulImage {
+        id
+        __typename
+        category
+        title
+        author
+        image {
+          file {
+            url
+          }
         }
       }
+      ... on ContentfulText {
+        __typename
+        id
+        category
+        title
+        author
+        description {
+          json
+        }
+      }
+      ... on ContentfulVideo {
+        __typename
+        id
+        category
+        title
+        author
+        url
+      }
+      ... on ContentfulWebsite {
+        __typename
+        id
+        category
+        url
+      }
     }
+  }
+}
+
   `);
 
-  data.pages.nodes.forEach(page => {
+  data.pages.quotes.forEach(page => {
         let slug = page.id;
-        let type = page.type.toLowerCase();
+        let category = page.category.toLowerCase().replace(" ", "_");
+        console.log(category)
 
         return createPage({
-          path: `${type}/${slug}`,
+          path: `${category}/${slug}`,
           component: path.resolve("./src/templates/modal/modal.tsx"),
           context: {
             slug: slug,
             id: slug,
+            data: page,
           }
         });
   });

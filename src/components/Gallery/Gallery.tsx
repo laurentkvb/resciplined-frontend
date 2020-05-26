@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./gallery.css";
+
 import Lightbox from "react-images";
 import Box from "@components/Box";
 import { graphql, navigate, useStaticQuery } from "gatsby";
@@ -9,18 +11,22 @@ interface Props {
 }
 
 const Gallery: React.FC<Props> = ({ images } : Props) => {
+  const [isFirstRun, setIsFirstRun] = useState(true);
   const [lightboxIsOpen, setLightBoxIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
   const [currentImages, setCurrentImages] = useState<any[]>([]);
 
   const availableQuotePages = useStaticQuery(pageQuery);
 
-  const { edges } = availableQuotePages.allContentfulPage;
+  const contentfulQuotes = availableQuotePages.contentfulQuotes.quotes;
 
 
   useEffect(() => {
-    setCurrentImages(shuffle(images));
-  }, [images]);
+    if (isFirstRun) {
+      setIsFirstRun(false);
+      setCurrentImages(shuffle(images));
+    }
+  }, [images, isFirstRun]);
 
   if (!images) return <Box />;
 
@@ -29,12 +35,11 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
     const imageSelected = images[index];
 
     // random, but should be based on the image type clicked
-    const items = edges.filter((test) => test.node.type.toLowerCase() === imageSelected.type.toLowerCase());
-
+    const items = contentfulQuotes.filter((test: any) => test.category.toLowerCase().replace(" ", "_") === imageSelected.type.toLowerCase());
     const item = items[Math.floor(Math.random() * items.length)];
 
 
-    navigate(`${item.node.type.toLowerCase()}/${item.node.id}`, { state: {
+    navigate(`${item.category.toLowerCase().replace(" ", "_")}/${item.id}`, { state: {
       modal: true
     } }); // navigate to edit page
 
@@ -151,17 +156,46 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
 
 export default Gallery;
 
-export const pageQuery = graphql`
-query GetPages {
-  allContentfulPage {
-    edges {
-      node {
+export const pageQuery = graphql` {
+  contentfulQuotes {
+    quotes {
+      ... on ContentfulImage {
         id
-        type
+        __typename
+        category
+        title
+        author
+        image {
+          file {
+            url
+          }
+        }
+      }
+      ... on ContentfulText {
+        __typename
+        id
+        category
+        title
+        author
+        description {
+          json
+        }
+      }
+      ... on ContentfulVideo {
+        __typename
+        id
+        category
+        title
+        author
+        url
+      }
+      ... on ContentfulWebsite {
+        __typename
+        id
+        category
+        url
       }
     }
   }
 }
-
-
 `;

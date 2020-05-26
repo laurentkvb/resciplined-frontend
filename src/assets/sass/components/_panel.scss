@@ -98,7 +98,7 @@
 
   @include breakpoint('<=small') {
     @include vendor('transform', 'translateY(-100vh)');
-    @include padding(4em, 2em);
+    //@include padding(4em, 2em);
     bottom: auto;
     top: calc(#{_size(header)} - 1px);
 

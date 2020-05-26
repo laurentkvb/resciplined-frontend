@@ -38,7 +38,11 @@ export const SEO: React.FC<SEOProps> = ({
         <html lang={metaData.ogLang} />
         <meta name="description" content={metaData.description} />
         <meta name="image" content={metaData.banner} />
+        <script async src="//embed.redditmedia.com/widgets/platform.js" charSet="UTF-8" />
+
       </Helmet>
     </>
   );
 };
+
+export default SEO;
