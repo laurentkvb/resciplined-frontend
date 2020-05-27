@@ -7,7 +7,11 @@
 /* Panel */
 
 .panel {
-  @include padding(4em, 4em);
+  //@include padding(1.5em, 2em);
+
+  padding-top: 20px;
+  padding-bottom:30px;
+
   @include vendor('transform', 'translateY(100vh)');
   @include vendor('transition', 'transform #{_duration(panel)} ease');
   -webkit-overflow-scrolling: touch;

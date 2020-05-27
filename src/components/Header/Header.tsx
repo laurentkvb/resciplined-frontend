@@ -27,7 +27,11 @@ const Header = ({ onAction = () => {} } : Props) => (
           <Box marginLeft="20px">
             <strong>{config.heading}</strong>
             <Box width="10px" />
-            <Text variant="bodyS" fontFamily="Roboto">Be responsible & disciplined.</Text>
+            <Text variant="bodyS" fontFamily="Roboto">Be </Text>
+            <Text variant="bodyS" fontFamily="Roboto" fontWeight="bold" style={{ textDecoration: "underline" }}>re</Text>
+            <Text variant="bodyS" fontFamily="Roboto">sponsible & di</Text>
+            <Text variant="bodyS" fontFamily="Roboto" fontWeight="bold" style={{ textDecoration: "underline" }}>sciplined</Text>
+            <Text variant="bodyS" fontFamily="Roboto">.</Text>
           </Box>
 
         </Flex>
