@@ -27,18 +27,17 @@ module.exports = {
     locale: "nl",
     siteLanguage: "nl",
     ogLang: "nl",
-    defaultTitle: "website.title",
-    defaultTitleAlt: "website.titleAlt",
-    defaultDescription: "website.description",
-    headline: "website.headline",
+    defaultTitle: "Resciplined",
+    defaultTitleAlt: "Resciplined",
+    defaultDescription: "Be responsible. Be disciplined",
+    headline: "Be responsible. Be disciplined",
     homeBannerTitle: "etc.",
     defaultSEO: {
       siteLanguage: "nl",
       ogLang: "nl_NL",
       title: "Resciplined",
       titleAlt: "Resciplined",
-      description:
-          "Restaurant",
+      description: "Be responsible. Be disciplined",
       headline: "defaultHeadline",
       defaultBanner: "",
       siteUrl: "https://www.resciplined.com"
