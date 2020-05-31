@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { LocaleContext } from "../../layout/Layout";
 import locales from "../../../config/i18n.js";
+import i18n from "../../../config/i18n";
 interface Props {
   to: string;
   children: React.ReactNode;
@@ -10,10 +11,18 @@ interface Props {
 
 export const LocalizedLink = ({ to, ...props }: Props) => {
   const { locale } = React.useContext(LocaleContext);
+  console.log("locale");
+  console.log(locale);
   const isIndex = to === "/";
-  const path = locales[locale].default
+
+  const localeNotNull = i18n[locale === undefined ? "en-US" : "en-US"];
+
+  console.log("localeNotNull");
+  console.log(localeNotNull);
+
+  const path = locales["en-US"].default
     ? to
-    : `${locales[locale].path}${isIndex ? "" : `${to}`}`;
+    : `${locales[localeNotNull].path}${isIndex ? "" : `${to}`}`;
   return <Link {...props} to={path} />;
 };
 export default LocalizedLink;

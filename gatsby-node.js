@@ -57,7 +57,10 @@ exports.createPages = async ({ actions, graphql }) => {
       ... on ContentfulImage {
         id
         __typename
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         image {
@@ -69,7 +72,10 @@ exports.createPages = async ({ actions, graphql }) => {
       ... on ContentfulText {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         description {
@@ -79,7 +85,10 @@ exports.createPages = async ({ actions, graphql }) => {
       ... on ContentfulVideo {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         url
@@ -87,19 +96,29 @@ exports.createPages = async ({ actions, graphql }) => {
       ... on ContentfulWebsite {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         url
       }
     }
   }
+  
+  categories:allContentfulCategory {
+    nodes {
+      name
+      slug
+    }
+  }
+  
 }
 
   `);
 
   data.pages.quotes.forEach(page => {
         let slug = page.id;
-        let category = page.category.toLowerCase().replace(" ", "_");
-        console.log(category)
+        let category = page.category.slug;
 
         return createPage({
           path: `${category}/${slug}`,
@@ -111,5 +130,26 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         });
   });
+
+
+
+  data.categories.nodes.forEach(categoryItem => {
+    let slug = categoryItem.slug;
+    let category = categoryItem.name;
+    const quotes = data.pages.quotes.filter(quote => quote.category.slug === categoryItem.slug);
+
+    return createPage({
+      path: `${slug}`,
+      component: path.resolve("./src/templates/page/page.tsx"),
+      context: {
+        category: category,
+        slug: slug,
+        data: categoryItem,
+        quotes: quotes,
+      }
+    });
+
+  });
+
 };
 

@@ -1,50 +1,55 @@
 import React, { useState, useEffect } from "react";
 import "./gallery.css";
 
+import { randomArrayELementHelper } from "@utils/randomArrayElementHelper";
 import Lightbox from "react-images";
 import Box from "@components/Box";
 import { graphql, navigate, useStaticQuery } from "gatsby";
+import { IContentfulBase } from "@models/IContentfulBase";
+import { IInternalCategory } from "@models/IInternalCategory";
 
 
 interface Props {
-  images: any[];
+  categoryImages: IInternalCategory[];
 }
 
-const Gallery: React.FC<Props> = ({ images } : Props) => {
+const Gallery: React.FC<Props> = ({ categoryImages } : Props) => {
   const [isFirstRun, setIsFirstRun] = useState(true);
   const [lightboxIsOpen, setLightBoxIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
-  const [currentImages, setCurrentImages] = useState<any[]>([]);
+  const [currentImages, setCurrentImages] = useState<IInternalCategory[]>([]);
 
   const availableQuotePages = useStaticQuery(pageQuery);
 
-  const contentfulQuotes = availableQuotePages.contentfulQuotes.quotes;
+  const contentfulQuotes: IContentfulBase[] = availableQuotePages.contentfulQuotes.quotes;
 
 
   useEffect(() => {
     if (isFirstRun) {
       setIsFirstRun(false);
-      setCurrentImages(shuffle(images));
+      setCurrentImages(shuffle(categoryImages));
     }
-  }, [images, isFirstRun]);
+  }, [categoryImages, isFirstRun]);
 
-  if (!images) return <Box />;
+  if (!categoryImages) return <Box />;
 
 
-  const openLightbox = (index: number, event: any) => {
+  // const openLightbox = (index: number, event: any) => {
+  const openLightbox = (index: number) => {
     const imageSelected = currentImages[index];
 
     // random, but should be based on the image type clicked
-    const items = contentfulQuotes.filter((test: any) => test.category.toLowerCase().replace(" ", "_") === imageSelected.type.toLowerCase());
-    const item = items[Math.floor(Math.random() * items.length)];
+    const items = contentfulQuotes
+      .filter((test: IContentfulBase) => test.category.slug === imageSelected.slug);
+    const item = randomArrayELementHelper(items);
 
 
-    navigate(`${item.category.toLowerCase().replace(" ", "_")}/${item.id}`, { state: {
+    navigate(`${item.category.slug}/${item.id}`, { state: {
       modal: true
     } }); // navigate to edit page
 
 
-    event.preventDefault();
+    // event.preventDefault();
     // setCurrentImage(index);
     // setLightBoxIsOpen(true);
     // navigate("modal-example", { state: {
@@ -66,8 +71,7 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
     setCurrentImage(currentImage + 1);
   };
 
-  const gotoImage = (index: number) => {
-    console.log(`Index: ${index}`);
+  const gotoImage = () => {
     navigate("modal-example", { state: {
       modal: true
     } }); // navigate to edit page
@@ -76,7 +80,7 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
   };
 
   const handleClickImage = () => {
-    if (currentImage === images.length - 1) return;
+    if (currentImage === categoryImages.length - 1) return;
     gotoNext();
   };
 
@@ -104,7 +108,7 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
   return (
     <>
       <>
-        {currentImages.map((obj: any, i: number) => (
+        {currentImages.map((obj: IInternalCategory, i: number) => (
 
 
           <article className="thumb" key={obj.src}>
@@ -116,7 +120,8 @@ const Gallery: React.FC<Props> = ({ images } : Props) => {
                 cursor: "pointer",
                 outline: "0px",
               }}
-              onClick={(e) => openLightbox(i, e)}
+              // onClick={(e) => openLightbox(i, e)}
+              onClick={() => openLightbox(i)}
               className="image"
             >
 
@@ -162,7 +167,10 @@ export const pageQuery = graphql` {
       ... on ContentfulImage {
         id
         __typename
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         image {
@@ -174,7 +182,10 @@ export const pageQuery = graphql` {
       ... on ContentfulText {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         description {
@@ -184,7 +195,10 @@ export const pageQuery = graphql` {
       ... on ContentfulVideo {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         title
         author
         url
@@ -192,7 +206,10 @@ export const pageQuery = graphql` {
       ... on ContentfulWebsite {
         __typename
         id
-        category
+        category {
+          name
+          slug
+        }
         url
       }
     }

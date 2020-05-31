@@ -7,5 +7,4 @@ export interface IQuotePage extends ISliceFields{
   description: Json;
   image: File,
   youtubeVideoId: string;
-
 }

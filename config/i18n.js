@@ -2,6 +2,7 @@ const website = require("./website");
 
 module.exports = {
   "en-US": {
+    default: true,
     path: "en",
     locale: "en-US",
     siteLanguage: "en",
@@ -22,7 +23,7 @@ module.exports = {
     },
   },
   nl: {
-    default: true,
+    default: false,
     path: "nl",
     locale: "nl",
     siteLanguage: "nl",
