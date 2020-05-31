@@ -15,7 +15,7 @@
     "lint:fix": "eslint src/. --ext .js,.jsx,.ts,.tsx --no-error-on-unmatched-pattern --fix",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "clean": "rm -rf .cache public",
+    "clean": "gatsby clean && rm -rf .cache public",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "bs": "gatsby build && gatsby serve"

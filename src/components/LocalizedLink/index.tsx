@@ -11,14 +11,9 @@ interface Props {
 
 export const LocalizedLink = ({ to, ...props }: Props) => {
   const { locale } = React.useContext(LocaleContext);
-  console.log("locale");
-  console.log(locale);
   const isIndex = to === "/";
 
   const localeNotNull = i18n[locale === undefined ? "en-US" : "en-US"];
-
-  console.log("localeNotNull");
-  console.log(localeNotNull);
 
   const path = locales["en-US"].default
     ? to

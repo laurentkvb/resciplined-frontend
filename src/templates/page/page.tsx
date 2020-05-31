@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import "./modal.css";
 
 
@@ -19,6 +19,7 @@ import { quoteUrlHelper } from "@utils/quoteUrlHelper";
 interface Props {
   pageContext: {
     data: IContentfulBase;
+    quotes: IContentfulBase[]
   }
 }
 
@@ -29,14 +30,31 @@ interface ModalProps {
 
 
 const Modal : React.FC<Props> = ({ pageContext } : Props) => {
-  const quote: IContentfulBase = randomArrayELementHelper(pageContext.quotes);
-  const quoteSlice = quoteReducer(quote);
+  const [isFirstRun, setIsFirstRun] = useState(true);
+  const [quote, setQuote] = useState();
 
+
+  useEffect(() => {
+    if (isFirstRun) {
+      setIsFirstRun(false);
+      const quoteSet = randomArrayELementHelper(pageContext.quotes);
+
+      setQuote(quoteSet);
+    }
+  }, [quote, pageContext.quotes, isFirstRun]);
+
+
+  if (!quote) {
+    return <Box />;
+  }
+
+  const quoteSlice = quoteReducer(quote);
 
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo } : ModalProps) => (
         <Layout fullWidth>
+
 
           <Box
             padding={[0, 0, 0, 0, 50, 50, 50]}
@@ -63,7 +81,7 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             {quoteSlice}
 
             {!modal && (
-            <Flex justifyContent="center">
+            <Flex justifyContent="center" onClick={() => setIsFirstRun(true)}>
               <LocalizedLink to={`/${quote.category.slug}`}>{`Get another random image / video / quote for "${quote.category.name}"`}</LocalizedLink>
             </Flex>
             )}
