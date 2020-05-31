@@ -25,7 +25,7 @@ export const SEO: React.FC<SEOProps> = ({
   const { defaultSEO } = i18n[locale === undefined ? "en-US" : locale];
 
   const metaData = {
-    title: defaultSEO.title + (title ? ` - ${title}` : ""),
+    title: (title ? `${title} - ${defaultSEO.title}` : defaultSEO.title),
     titleAlt: titleAlt || defaultSEO.titleAlt,
     description: description || defaultSEO.description,
     ogLang: defaultSEO.ogLang,

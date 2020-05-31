@@ -12,6 +12,8 @@ import { quoteReducer } from "@utils/quoteReducer";
 import { randomArrayELementHelper } from "@utils/randomArrayElementHelper";
 import LocalizedLink from "@components/LocalizedLink";
 import Flex from "@components/Flex";
+import ShareButtons from "@components/ShareButtons";
+import { quoteUrlHelper } from "@utils/quoteUrlHelper";
 
 
 interface Props {
@@ -52,7 +54,7 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             )}
 
             {/* {modal && <Test />} */}
-            <SEO title={quote.category} />
+            <SEO title={quote.title} />
 
 
             {(modal && quote.__typename === "ContentfulWebsite")
@@ -63,10 +65,13 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             {!modal && (
             <Flex justifyContent="center">
               <LocalizedLink to={`/${quote.category.slug}`}>{`Get another random image / video / quote for "${quote.category.name}"`}</LocalizedLink>
-              {" "}
             </Flex>
             )}
 
+            <Flex justifyContent="center" marginX={10} marginY="30px">
+
+              <ShareButtons twitterHandle="resciplined" url={quoteUrlHelper(quote)} title={quote.title} tags={[quote.category.name, "resciplined"]} />
+            </Flex>
 
           </Box>
         </Layout>
