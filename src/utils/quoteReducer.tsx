@@ -9,6 +9,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS } from "@contentful/rich-text-types";
 
 import Box from "@components/Box";
+import Flex from "@components/Flex";
 import Text from "@components/Text";
 
 const youtubeOptions : Options = {
@@ -65,31 +66,31 @@ export const quoteReducer = (quote: IContentfulBase) => {
     case "ContentfulWebsite":
       return (
         <Box>
-          <blockquote className="reddit-card" data-card-created="1590310094">
-            <a
-              href="https://www.reddit.com/r/selfimprovement/comments/gpaspb/i_challenged_myself_to_run_everyday_for_30_days/?ref=share&ref_source=embed"
-            >
-              I
-              Challenged Myself to Run Everyday for 30 days. It Ended up Changing My Life
-            </a>
-            from
-            <a
-              href="http://www.reddit.com/r/selfimprovement"
-            >
-              r/selfimwprovement
-            </a>
-          </blockquote>
+          {/* <blockquote className="reddit-card" data-card-created="1590310094"> */}
+          {/*  <a */}
+          {/*    href="https://www.reddit.com/r/selfimprovement/comments/gpaspb/i_challenged_myself_to_run_everyday_for_30_days/?ref=share&ref_source=embed" */}
+          {/*  > */}
+          {/*    I */}
+          {/*    Challenged Myself to Run Everyday for 30 days. It Ended up Changing My Life */}
+          {/*  </a> */}
+          {/*  from */}
+          {/*  <a */}
+          {/*    href="http://www.reddit.com/r/selfimprovement" */}
+          {/*  > */}
+          {/*    r/selfimprovement */}
+          {/*  </a> */}
+          {/* </blockquote> */}
         </Box>
       );
     case "ContentfulText":
       return (
         <Box>
-          <Box>
+          <Flex justifyContent="center">
             {documentToReactComponents((quote as IContentfulText)
               .description.json,
             richTextOptions)}
             <Text variant="quoteAuthor" color="black" textShadow="">{(quote as IContentfulText).author}</Text>
-          </Box>
+          </Flex>
         </Box>
       );
     default:
