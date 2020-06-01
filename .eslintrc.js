@@ -39,6 +39,8 @@ module.exports = {
           '@models': './src/models',
           '@utils/*': './src/utils/*',
           '@utils': './src/utils',
+          '@templates/*': './src/templates/*',
+          '@templates': './src/templates',
         },
         "extensions": [".js", ".jsx", ".tsx",".ts"],
 

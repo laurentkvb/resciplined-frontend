@@ -87,6 +87,12 @@
             ],
             "@utils": [
                 "src/utils"
+            ],
+            "templates": [
+                "src/templates/*"
+            ],
+            "@templates": [
+                "src/templates"
             ]
         },
         // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

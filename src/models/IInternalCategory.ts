@@ -5,4 +5,5 @@ export interface IInternalCategory {
   desc: string
   type: string
   slug: string
+  caption?: string
 }

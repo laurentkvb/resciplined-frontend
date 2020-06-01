@@ -8,12 +8,10 @@ import Box from "@components/Box";
 import SEO from "@components/SEO";
 import { IContentfulBase } from "@models/IContentfulBase";
 import Layout from "@components/Layout";
-import { quoteReducer } from "@utils/quoteReducer";
 import { randomArrayELementHelper } from "@utils/randomArrayElementHelper";
-import LocalizedLink from "@components/LocalizedLink";
+import QuoteContent from "@templates/QuoteContent";
 import Flex from "@components/Flex";
-import ShareButtons from "@components/ShareButtons";
-import { quoteUrlHelper } from "@utils/quoteUrlHelper";
+import LocalizedLink from "@components/LocalizedLink";
 
 
 interface Props {
@@ -48,8 +46,6 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
     return <Box />;
   }
 
-  const quoteSlice = quoteReducer(quote);
-
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo } : ModalProps) => (
@@ -75,21 +71,17 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             <SEO title={quote.title} />
 
 
-            {(modal && quote.__typename === "ContentfulWebsite")
-            && <Box height={modal ? [0, 50, 50, 50, 50, 50, 50] : ""} />}
+            {quote && (
+            <>
 
-            {quoteSlice}
+              <Flex justifyContent="center" onClick={() => setIsFirstRun(true)} marginBottom={50}>
+                <LocalizedLink to={`/${quote.category.slug}`}>{`Get another random image / video / quote for "${quote.category.name}"`}</LocalizedLink>
+              </Flex>
 
-            {!modal && (
-            <Flex justifyContent="center" onClick={() => setIsFirstRun(true)}>
-              <LocalizedLink to={`/${quote.category.slug}`}>{`Get another random image / video / quote for "${quote.category.name}"`}</LocalizedLink>
-            </Flex>
+              <QuoteContent quote={quote} modal={modal} />
+            </>
             )}
 
-            <Flex justifyContent="center" marginX={10} marginY="30px">
-
-              <ShareButtons twitterHandle="resciplined" url={quoteUrlHelper(quote)} title={quote.title} tags={[quote.category.name, "resciplined"]} />
-            </Flex>
 
           </Box>
         </Layout>

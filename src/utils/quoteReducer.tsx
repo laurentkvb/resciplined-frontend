@@ -8,7 +8,6 @@ import YouTube, { Options } from "react-youtube";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
 
-
 import Box from "@components/Box";
 import Text from "@components/Text";
 
@@ -56,7 +55,7 @@ export const quoteReducer = (quote: IContentfulBase) => {
       return (
         <Box
           width="100%"
-          height="500px"
+          height="400px"
           backgroundImage={`url(${(quote as IContentfulImage).image.file.url})`}
           backgroundPosition="center"
           backgroundSize="contain"

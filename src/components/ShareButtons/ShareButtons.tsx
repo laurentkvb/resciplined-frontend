@@ -12,7 +12,7 @@ import {
   RedditIcon
 } from "react-share";
 
-import Box from "@components/Box";
+import Flex from "@components/Flex";
 
 interface Props {
   twitterHandle: string;
@@ -20,8 +20,9 @@ interface Props {
   title: string;
   tags: string[];
 }
+
 const ShareButtons: React.FC<Props> = ({ twitterHandle, url, title, tags } : Props) => (
-  <Box>
+  <Flex flexDirection="row" justifyContent="space-evenly">
     <FacebookShareButton url={url}>
       <FacebookIcon />
     </FacebookShareButton>
@@ -41,7 +42,7 @@ const ShareButtons: React.FC<Props> = ({ twitterHandle, url, title, tags } : Pro
     <WhatsappShareButton url={url} title={title}>
       <WhatsappIcon />
     </WhatsappShareButton>
-  </Box>
+  </Flex>
 );
 
 export default ShareButtons;
