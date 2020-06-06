@@ -48,13 +48,14 @@ const QuoteContent: React.FC<Props> = ({ quote, modal } : Props) => {
       </Flex>
 
 
-      <Flex justifyContent="center" marginX={10} marginY="30px">
+      <Flex justifyContent="center" marginX={10} marginY="30px" flexDirection="column" alignItems="center">
         <ShareButtons
           twitterHandle="resciplined"
           url={quoteUrlHelper(quote)}
           title={quote.title}
           tags={[quote.category.name, "resciplined"]}
         />
+
 
         <CopyToClipboard
           onCopy={() => changeCopied(true)}
