@@ -28,13 +28,20 @@ export const richTextOptions = {
         variant="quoteAuthor"
         color="greenAccent"
         marginBottom="10px"
+        textAlign="center"
       >
         {children}
       </Text>
     ),
     [BLOCKS.PARAGRAPH]: ({}, children: ReactNode) => (
       <Box marginBottom="36px" width="100%">
-        <Text variant="quote" color="black">{children}</Text>
+        <Text
+          variant="quote"
+          color="black"
+          textAlign="center"
+        >
+          {children}
+        </Text>
       </Box>
     )
   }
@@ -84,12 +91,24 @@ export const quoteReducer = (quote: IContentfulBase) => {
       );
     case "ContentfulText":
       return (
-        <Box>
-          <Flex justifyContent="center">
+        <Box marginBottom="50px">
+          <Flex
+            justifyContent="center"
+            flexDirection="column"
+            alignContent="center"
+          >
             {documentToReactComponents((quote as IContentfulText)
-              .description.json,
-            richTextOptions)}
-            <Text variant="quoteAuthor" color="black" textShadow="">{(quote as IContentfulText).author}</Text>
+              .description.json, richTextOptions)}
+
+            <Text
+              variant="quoteAuthor"
+              color="black"
+              textShadow=""
+              textAlign="center"
+            >
+
+              {(quote as IContentfulText).author && `- ${(quote as IContentfulText).author}` }
+            </Text>
           </Flex>
         </Box>
       );

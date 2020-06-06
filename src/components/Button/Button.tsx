@@ -1,13 +1,14 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 import { ButtonStyled, Icon } from "./button.styles";
 
 interface Props {
   children: React.ReactNode;
   leadingIcon?: string;
-  onClick: Function;
+  onClick?: Function;
   variant?: string;
   disabled?: boolean;
+  style?: CSSProperties;
 }
 
 const Button = ({ children, leadingIcon, onClick, variant = "primary", ...props }: Props) => (
