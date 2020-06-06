@@ -12,13 +12,17 @@ import Button from "@components/Button";
 
 interface Props {
   quote: IContentfulBase;
-  modal: boolean
+  modal: boolean;
+  slug: string;
+  isDetailPage: boolean;
 }
 
-const QuoteContent: React.FC<Props> = ({ quote, modal } : Props) => {
+const QuoteContent: React.FC<Props> = ({ quote, modal, slug, isDetailPage }: Props) => {
   const [isCopied, changeCopied] = useState<boolean>(false);
-
   const quoteSlice = quoteReducer(quote);
+
+  const overviewPageLink = slug === "random" ? "random" : quote.category.slug;
+  const overviewPageName = slug === "random" ? "Random" : quote.category.name;
 
   useEffect(() => {
     if (isCopied) {
@@ -28,27 +32,39 @@ const QuoteContent: React.FC<Props> = ({ quote, modal } : Props) => {
     }
   }, [isCopied]);
 
-
   return (
     <>
-      {(modal && quote.__typename === "ContentfulWebsite") && <Box height={modal ? [0, 50, 50, 50, 50, 50, 50] : ""} />}
+      {modal && quote.__typename === "ContentfulWebsite" && (
+        <Box height={modal ? [0, 50, 50, 50, 50, 50, 50] : "0px"} />
+      )}
 
-
-      {modal && (
+      {(!isDetailPage || modal) && (
       <Flex justifyContent="center" marginBottom="30px">
-        <LocalizedLink to={`/${quote.category.slug}/${quote.id}`}>{"Go to Quote's page"}</LocalizedLink>
-
+        <LocalizedLink to={`/${quote.category.slug}/${quote.id}`}>
+          {"Go to Quote's page"}
+        </LocalizedLink>
       </Flex>
       )}
+
       {quoteSlice}
 
-
+      {(!modal && slug !== "random") && (
       <Flex justifyContent="center">
-        <LocalizedLink to={`/${quote.category.slug}`}>{`Go to '${quote.category.name}' page`}</LocalizedLink>
+        <LocalizedLink
+          to={`/${overviewPageLink}`}
+        >
+          {`Go to '${overviewPageName}' page`}
+        </LocalizedLink>
       </Flex>
+      )}
 
-
-      <Flex justifyContent="center" marginX={10} marginY="30px" flexDirection="column" alignItems="center">
+      <Flex
+        justifyContent="center"
+        marginX={10}
+        marginY="30px"
+        flexDirection="column"
+        alignItems="center"
+      >
         <ShareButtons
           twitterHandle="resciplined"
           url={quoteUrlHelper(quote)}
@@ -56,29 +72,25 @@ const QuoteContent: React.FC<Props> = ({ quote, modal } : Props) => {
           tags={[quote.category.name, "resciplined"]}
         />
 
-
         <CopyToClipboard
           onCopy={() => changeCopied(true)}
           options={{ message: "Copied to clipboard!" }}
           text={quoteUrlHelper(quote)}
         >
-          <Button style={{ whiteSpace: "pre-line", height: 64 }}>Copy url to clipboard</Button>
-
+          <Button style={{ whiteSpace: "pre-line", height: 64 }}>
+            Copy url to clipboard
+          </Button>
         </CopyToClipboard>
-
-
       </Flex>
       {isCopied && (
-      <Flex justifyContent="center">
-        <Text variant="h4" fontWeight="bold" textAlign="center">Url copied!</Text>
-        {" "}
-      </Flex>
+        <Flex justifyContent="center">
+          <Text variant="h4" fontWeight="bold" textAlign="center">
+            Url copied!
+          </Text>
+        </Flex>
       )}
-
-
     </>
   );
 };
-
 
 export default QuoteContent;

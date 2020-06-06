@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./footer.css";
+
 import config from "../../../config";
 import FormContact from "@components/FormContact";
 import Box from "@components/Box";
@@ -41,6 +43,28 @@ const Footer:React.FC<Props> = ({ onClose, isVisible }: Props) => (
                 </li>
               );
             })}
+
+
+            <li>
+              <a
+                className="bmc-button"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.buymeacoffee.com/resciplined"
+              >
+                <img
+                  src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg"
+                  alt="Buy me a coffee"
+                />
+                <span
+                  style={{ marginLeft: "5px", fontSize: "28px", fontFamily: "Roboto" }}
+                >
+                  Buy me a coffee
+                </span>
+              </a>
+            </li>
+
+
           </ul>
         </section>
       </Box>

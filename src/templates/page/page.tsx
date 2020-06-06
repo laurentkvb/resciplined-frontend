@@ -17,7 +17,8 @@ import LocalizedLink from "@components/LocalizedLink";
 interface Props {
   pageContext: {
     data: IContentfulBase;
-    quotes: IContentfulBase[]
+    quotes: IContentfulBase[];
+    slug: string;
   }
 }
 
@@ -27,10 +28,11 @@ interface ModalProps {
 }
 
 
-const Modal : React.FC<Props> = ({ pageContext } : Props) => {
+const Page : React.FC<Props> = ({ pageContext } : Props) => {
   const [isFirstRun, setIsFirstRun] = useState(true);
-  const [quote, setQuote] = useState();
+  const [quote, setQuote] = useState<IContentfulBase>();
 
+  const { slug } = pageContext;
 
   useEffect(() => {
     if (isFirstRun) {
@@ -45,6 +47,10 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
   if (!quote) {
     return <Box />;
   }
+
+  const overviewPageLink = slug === "random" ? "random" : quote.category.slug;
+  const overviewPageName = slug === "random" ? "Random" : quote.category.name;
+
 
   return (
     <ModalRoutingContext.Consumer>
@@ -70,16 +76,15 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
             {/* {modal && <Test />} */}
             <SEO title={quote.title} />
 
+            {!modal
+            && (
+            <Flex justifyContent="center" onClick={() => setIsFirstRun(true)} marginBottom={modal ? 50 : 0}>
+              <LocalizedLink to={`/${overviewPageLink}`}>{`Get another random image / video / quote for "${overviewPageName}"`}</LocalizedLink>
+            </Flex>
+            )}
 
-            {quote && (
-            <>
-
-              <Flex justifyContent="center" onClick={() => setIsFirstRun(true)} marginBottom={50}>
-                <LocalizedLink to={`/${quote.category.slug}`}>{`Get another random image / video / quote for "${quote.category.name}"`}</LocalizedLink>
-              </Flex>
-
-              <QuoteContent quote={quote} modal={modal} />
-            </>
+            {(quote) && (
+            <QuoteContent quote={quote} modal={modal} slug={pageContext.slug} />
             )}
 
 
@@ -90,4 +95,4 @@ const Modal : React.FC<Props> = ({ pageContext } : Props) => {
   );
 };
 
-export default Modal;
+export default Page;

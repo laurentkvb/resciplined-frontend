@@ -38,15 +38,21 @@ const Gallery: React.FC<Props> = ({ categoryImages } : Props) => {
   const openLightbox = (index: number) => {
     const imageSelected = currentImages[index];
 
-    // random, but should be based on the image type clicked
-    const items = contentfulQuotes
-      .filter((test: IContentfulBase) => test.category.slug === imageSelected.slug);
-    const item = randomArrayELementHelper(items);
+    let items = contentfulQuotes;
 
+    if (imageSelected.slug !== "random") {
+      items = items
+        .filter((test: IContentfulBase) => test.category.slug === imageSelected.slug);
+      const item = randomArrayELementHelper(items);
 
-    navigate(`${item.category.slug}/${item.id}`, { state: {
-      modal: true
-    } }); // navigate to edit page
+      navigate(`${item.category.slug}/${item.id}`, { state: {
+        modal: true,
+      } }); // navigate to edit page
+    } else {
+      navigate("random", { state: {
+        modal: true,
+      } }); // navigate to edit page
+    }
 
 
     // event.preventDefault();

@@ -34,13 +34,9 @@ const ShareButtons: React.FC<Props> = ({ twitterHandle, url, title, tags } : Pro
       <FacebookIcon />
     </FacebookShareButton>
 
-
     <TwitterShareButton url={url} title={title} via={twitterHandle} hashtags={tags}>
       <TwitterIcon />
     </TwitterShareButton>
-    <FacebookShareButton url={url}>
-      <FacebookIcon />
-    </FacebookShareButton>
 
     <LinkedinShareButton url={url}>
       <LinkedinIcon />

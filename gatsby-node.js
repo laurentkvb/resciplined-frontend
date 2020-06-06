@@ -125,6 +125,7 @@ exports.createPages = async ({ actions, graphql }) => {
           path: `${category}/${slug}`,
           component: path.resolve("./src/templates/modal/modal.tsx"),
           context: {
+            isDetailPage: true,
             slug: slug,
             id: slug,
             data: page,
@@ -137,7 +138,12 @@ exports.createPages = async ({ actions, graphql }) => {
   data.categories.nodes.forEach(categoryItem => {
     let slug = categoryItem.slug;
     let category = categoryItem.name;
-    const quotes = data.pages.quotes.filter(quote => quote.category.slug === categoryItem.slug);
+
+    let quotes = data.pages.quotes;
+
+    if(slug !== "random") {
+      quotes = quotes.filter(quote => quote.category.slug === categoryItem.slug);
+    }
 
     return createPage({
       path: `${slug}`,
